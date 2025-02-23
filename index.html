@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ted Bundy: Charm Killer</title>
+    <style>
+        body { 
+            font-family: 'Courier New', monospace; 
+            background: url('https://www.transparenttextures.com/patterns/blood.png'), 
+                        #1a0000; /* Blood splatter on dark red, no pentagrams */
+            background-blend-mode: overlay; 
+            background-size: 200px; 
+            background-position: center; 
+            color: #ff4040; /* Bright blood-red text */
+            text-align: center; 
+            padding: 20px; 
+            margin: 0; 
+            height: 100vh; /* Full viewport height */
+            overflow-y: auto; /* Make entire page scrollable */
+            animation: charmPulse 6s infinite; /* Smoother, charming pulse */
+        }
+        @keyframes charmPulse {
+            0%, 100% { background-color: #1a0000; }
+            50% { background-color: #2a0000; } /* Subtle red pulse */
+        }
+        #game-container { 
+            max-width: 900px; 
+            margin: 20px auto; 
+            background: rgba(0, 0, 0, 0.8); /* Lighter black background */
+            padding: 20px; 
+            border: 3px solid #ff0000; /* Bright red, charming border */
+            border-radius: 5px; /* Rounded edges for deceptive charm */
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 0, 0.5); /* Subtle bloody glow */
+            position: relative; 
+            animation: bloodDrip 5s infinite; /* Smoother dripping */
+        }
+        @keyframes bloodDrip {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 0, 1), inset 0 0 20px rgba(255, 0, 0, 0.7); }
+        }
+        h1 { 
+            color: #ff4040; /* Bright blood-red title */
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4040; /* Glowing blood effect */
+            letter-spacing: 3px; 
+            font-size: 32px; /* Slightly smaller, charming title */
+            animation: charmFlicker 2s infinite; /* Subtle, charming flicker */
+        }
+        @keyframes charmFlicker {
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4040; }
+            50% { opacity: 0.9; text-shadow: 0 0 15px #ff4040, 0 0 25px #ff0000; }
+        }
+        #output { 
+            background: linear-gradient(to bottom, rgba(139, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.9) 70%); /* Blood-stained gradient */
+            padding: 15px; 
+            height: 500px; /* Fixed height for output, still scrollable internally */
+            overflow-y: auto; /* Internal scrolling for output */
+            text-align: left; 
+            border: 2px dashed #ff4040; /* Red, charming dashed border */
+            margin-bottom: 20px; 
+            line-height: 1.6; 
+            box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.4); /* Subtle inner blood glow */
+            font-size: 16px; /* Readable text */
+            font-weight: normal; /* Less intense than Satanist version */
+            text-shadow: 0 0 2px rgba(255, 0, 0, 0.3); /* Light bloody shadow */
+        }
+        #choices { 
+            margin-top: 20px; 
+        }
+        button { 
+            background: linear-gradient(to bottom, #4a0000, #2e0000); /* Dark blood red */
+            color: #ffffff; /* White text for options */
+            border: 2px solid #ff0000; /* Bright red, charming border */
+            padding: 12px 25px; /* Standard, approachable buttons */
+            margin: 5px; 
+            cursor: pointer; 
+            border-radius: 3px; /* Rounded for deceptive charm */
+            font-family: 'Courier New', monospace; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* Subtle bloody shadow */
+            box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.5), 0 2px 10px rgba(255, 0, 0, 0.7); /* Subtle bloody glow */
+            pointer-events: auto !important; /* Ensure buttons are clickable */
+            z-index: 10; /* Ensure buttons are above other elements */
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        button::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 0%, transparent 70%); /* Blood splatter effect */
+            opacity: 0.3; 
+            pointer-events: none; 
+        }
+        button:hover { 
+            transform: scale(1.05); /* Subtle, charming hover */
+            box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); /* Enhanced blood glow */
+            background: linear-gradient(to bottom, #6b0000, #4a0000); /* Darker red on hover */
+            animation: charmFlicker 1s infinite; /* Subtle flicker on hover */
+        }
+        .stat-bar { 
+            color: #ff6666; /* Glowing blood-red stats */
+            font-weight: bold; 
+            background: rgba(0, 0, 0, 0.9); /* Dark background */
+            padding: 8px; 
+            border-radius: 5px; /* Rounded for charm */
+            border: 1px solid #ff0000; /* Red border */
+            margin-bottom: 10px; 
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3); /* Subtle bloody shadow */
+            animation: charmPulse 6s infinite; /* Sync with body pulse */
+        }
+        .warning { 
+            color: #ff4040; /* Bright blood-red warning */
+            font-weight: bold; 
+            text-shadow: 0 0 5px #ff0000; /* Glowing blood effect */
+            animation: charmFlicker 2s infinite; /* Subtle, charming flicker */
+        }
+        .kill-flash { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            animation: bloodFlash 0.5s ease-out; /* Quick, charming flash */
+        }
+        .kill-flash.victim { 
+            background: rgba(255, 0, 0, 0.6); /* Intense blood red */
+            border: 2px solid #ff4040; /* Red, charming border */
+            animation: bloodFlash 0.5s ease-out 2; /* Double flash for intensity */
+        }
+        @keyframes bloodDrip {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.8), inset 0 0 15px rgba(255, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 0, 1), inset 0 0 20px rgba(255, 0, 0, 0.7); }
+        }
+        @keyframes charmPulse {
+            0%, 100% { background-color: #1a0000; }
+            50% { background-color: #2a0000; }
+        }
+        @keyframes charmFlicker {
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4040; }
+            50% { opacity: 0.9; text-shadow: 0 0 15px #ff4040, 0 0 25px #ff0000; }
+        }
+        @keyframes bloodFlash {
+            0% { opacity: 1; background: rgba(255, 0, 0, 0.8); } /* Bright blood flash */
+            100% { opacity: 0; background: transparent; }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Ted Bundy: Charm Killer</h1>
+        <div id="output"></div>
+        <div id="choices"></div>
+    </div>
+    <audio id="kill-sound" src="https://freesound.org/data/previews/66/66114_634166-lq.mp3" preload="auto"></audio>
+    <script src="game.js"></script>
+</body>
+</html>
